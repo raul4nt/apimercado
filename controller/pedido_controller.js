@@ -15,7 +15,8 @@ async function inserirPedido(req, res) {
     await pedidoService.inserirPedido(pedido);
     res.status(201).json({ mensagem: "Seu pedido foi inserido" });
   } catch (error) {
-    res.status(error.id).json({ mensagem: error.message });
+    const statusCode = error.id || 500;  
+    res.status(statusCode).json({ mensagem: error.message });
   }
 }
 
@@ -50,10 +51,34 @@ async function deletarPedido(req, res) {
   }
 }
 
+
+async function pedidosCliente(req, res) {
+  const clienteId = req.params.clienteId;
+
+  try {
+    const pedidosDoCliente = await pedidoService.pedidosCliente(clienteId);
+    res.status(200).json({ pedidosDoCliente });
+  } catch (error) {
+    res.status(error.id || 500).json({ mensagem: error.message || "Erro interno do servidor" });
+  }
+}
+
+async function pedidosData(req, res) {
+  const data = req.params.data;
+  try {
+    const listaPedidos = await pedidoService.pedidosData(data);
+    res.status(200).json(listaPedidos);
+  } catch (error) {
+    res.status(error.id || 500).json({ mensagem: error.message || "Erro interno do servidor" });
+  }
+}
+
 module.exports = {
   listarPedidos,
   inserirPedido,
   buscarPedidoPorId,
   atualizarPedido,
   deletarPedido,
+  pedidosCliente,
+  pedidosData
 };

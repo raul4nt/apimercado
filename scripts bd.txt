@@ -1,0 +1,24 @@
+CREATE TABLE clientes (
+  cliente_id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  telefone VARCHAR(15) NOT NULL,
+  cidade VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE pedidos (
+  id SERIAL PRIMARY KEY,
+  cliente_id INTEGER REFERENCES clientes(cliente_id) NOT NULL,
+  produto_id INTEGER REFERENCES produtos(id) NOT NULL,
+  quantidade INTEGER NOT NULL,
+  valor_total DOUBLE PRECISION NOT NULL,
+  data_pedido CHARACTER VARYING(10) NOT NULL,
+  hora_pedido TIME WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE TABLE produtos (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  marca VARCHAR(255) NOT NULL,
+  preco DOUBLE PRECISION NOT NULL,
+  disponivel BOOLEAN NOT NULL
+);

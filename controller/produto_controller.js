@@ -46,9 +46,10 @@ async function deletar(req, res) {
   }
 }
 
+
 async function atualizarPreco(req, res) {
   const id = req.params.id;
-  const novoPreco = req.body.novoPreco;
+  const novoPreco = req.body.preco; 
   try {
     await produtoService.atualizarPreco(id, novoPreco);
     res.status(200).json({ mensagem: "Preço do produto atualizado" });
