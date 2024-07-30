@@ -1,6 +1,6 @@
 # API Mercado 
 
-Este repositório contém um conjunto de serviços e APIs para gerenciamento de clientes, pedidos e produtos, desenvolvido como projeto final para a disciplina de **Desenvolvimento de Serviços e APIs** no terceiro semestre de faculdade.
+Este repositório contém um conjunto de serviços e APIs(com conexão a banco de dados) para gerenciamento de clientes, pedidos e produtos, desenvolvido como projeto final para a disciplina de **Desenvolvimento de Serviços e APIs** no terceiro semestre de faculdade.
 
 ## Funcionalidades Gerais
 
